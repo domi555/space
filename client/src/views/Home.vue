@@ -18,7 +18,7 @@
         <h3 class="my-2">Recent spaces</h3>
         <v-card>
           <v-card-actions>
-            <p class="ms-2 mb-0">Item name</p>
+            <p class="ms-2 mb-0">Space name</p>
 
             <v-spacer></v-spacer>
 
@@ -29,7 +29,7 @@
         <h3 class="my-2 mt-4">Shared spaces</h3>
         <v-card>
           <v-card-actions>
-            <p class="ms-2 mb-0">Item name</p>
+            <p class="ms-2 mb-0">Space name</p>
 
             <v-spacer></v-spacer>
 

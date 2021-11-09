@@ -6,12 +6,13 @@
         color="teal"
         label="Name"
         hide-details="auto"
+        value="Product name"
       ></v-text-field>
       <h4 class="mt-4 mb-2">Image</h4>
-      <v-btn small dark class="teal darken-2">Select</v-btn><br />
+      <v-btn small dark class="teal darken-2">Select New</v-btn><br />
 
-      <v-btn dark class="mt-5 me-2 teal darken-2">Create</v-btn>
-      <v-btn dark class="mt-5 teal darken-2">Delete</v-btn>
+      <v-btn dark class="mt-5 me-2 teal darken-2">Save</v-btn>
+      <v-btn dark class="mt-5 teal darken-2">Delete All</v-btn>
     </div>
   </v-container>
 </template>
