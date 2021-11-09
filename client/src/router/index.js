@@ -4,10 +4,12 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Spaces from '../views/Spaces.vue';
 import Account from '../views/Account.vue';
-import Products from '../views/Products.vue';
+import Items from '../views/Items.vue';
 
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
+
+import Camera from '../views/Camera.vue';
 
 Vue.use(VueRouter);
 
@@ -23,9 +25,9 @@ const routes = [
     component: Spaces,
   },
   {
-    path: '/space/product',
-    name: 'Products',
-    component: Products,
+    path: '/items',
+    name: 'Items',
+    component: Items,
   },
   {
     path: '/account',
@@ -42,6 +44,12 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register,
+  },
+
+  {
+    path: '/camera',
+    name: 'Camera',
+    component: Camera,
   },
 ];
 

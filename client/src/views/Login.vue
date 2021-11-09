@@ -28,7 +28,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn plain to="/register">No account?</v-btn>
-              <v-btn dark>Login</v-btn>
+              <v-btn dark to="/">Login</v-btn>
             </v-card-actions>
           </v-card>
         </div>

@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <v-app-bar dark absolute>
+    <v-app-bar dark absolute class="teal darken-2">
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-toolbar-title class="ps-0">[...]</v-toolbar-title>
+      <v-toolbar-title class="ps-0">Spaces</v-toolbar-title>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary>
@@ -13,7 +13,7 @@
               Menu
             </v-list-item-title>
             <v-list-item-subtitle>
-              [...]
+              Navigation
             </v-list-item-subtitle>
           </v-list-item-content>
           <v-btn @click="drawer = false" dark>
@@ -23,13 +23,14 @@
 
         <v-list-item-group
           v-model="group"
-          active-class="black--text text--accent-4"
+          class="black--text text--accent-4"
+          active-class="teal--text darken-2"
         >
           <v-list-item link to="/">
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Landing</v-list-item-title>
+            <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
 
           <v-list-item link to="/spaces">

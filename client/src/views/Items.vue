@@ -8,8 +8,8 @@
 
             <v-spacer></v-spacer>
 
-            <span class="me-3">[...]</span>
-            <v-btn dark>Open</v-btn>
+            <span class="me-3">1 Products</span>
+            <v-btn class="teal darken-2 white--text">Open</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

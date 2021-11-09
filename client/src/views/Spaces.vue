@@ -13,11 +13,11 @@
           </v-img>
 
           <v-card-actions>
-            <p class="ms-2 mb-0">[...] Items</p>
+            <p class="ms-2 mb-0">1 Item</p>
 
             <v-spacer></v-spacer>
 
-            <v-btn dark to="/space/product">Open</v-btn>
+            <v-btn class="teal darken-2 white--text" to="/items">Open</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
