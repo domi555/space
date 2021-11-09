@@ -16,7 +16,7 @@
               Navigation
             </v-list-item-subtitle>
           </v-list-item-content>
-          <v-btn @click="drawer = false" dark>
+          <v-btn class="teal darken-2" @click="drawer = false" dark>
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </v-list-item>

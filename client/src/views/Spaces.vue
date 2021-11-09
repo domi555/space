@@ -22,6 +22,12 @@
         </v-card>
       </v-col>
     </v-row>
+
+    <div style="position: fixed; bottom: 12px; right: 12px;">
+      <v-btn color="teal darken-2" small fab dark to="/add-space">
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+    </div>
   </v-container>
 </template>
 

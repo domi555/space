@@ -4,7 +4,7 @@
       <v-layout align-center justify-center>
         <div class="col-12">
           <v-card class="elevation-12">
-            <v-toolbar dark>
+            <v-toolbar class="teal darken-2" dark>
               <v-toolbar-title>Register</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
@@ -42,7 +42,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn plain to="/login">Already have an account?</v-btn>
-              <v-btn dark>Register</v-btn>
+              <v-btn class="teal darken-2" dark>Register</v-btn>
             </v-card-actions>
           </v-card>
         </div>

@@ -8,12 +8,32 @@
 
             <v-spacer></v-spacer>
 
-            <span class="me-3">1 Products</span>
-            <v-btn class="teal darken-2 white--text">Open</v-btn>
+            <v-btn plain small to="/edit-product">
+              Edit
+            </v-btn>
+            <v-btn class="teal darken-2 white--text" to="/product">Open</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
+
+    <div style="position: fixed; bottom: 12px; right: 12px;">
+      <div class="d-flex flex-column">
+        <v-btn
+          color="teal darken-2"
+          small
+          fab
+          dark
+          class="mb-2"
+          to="/add-product"
+        >
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
+        <v-btn color="teal darken-2" small fab dark>
+          <v-icon>mdi-minus</v-icon>
+        </v-btn>
+      </div>
+    </div>
   </v-container>
 </template>
 

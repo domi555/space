@@ -18,8 +18,22 @@
         <h3 class="my-2">Recent spaces</h3>
         <v-card>
           <v-card-actions>
-            <v-card-title>Space name</v-card-title> <v-spacer></v-spacer>
-            <v-btn></v-btn>
+            <p class="ms-2 mb-0">Item name</p>
+
+            <v-spacer></v-spacer>
+
+            <v-btn class="teal darken-2 white--text">Open</v-btn>
+          </v-card-actions>
+        </v-card>
+
+        <h3 class="my-2 mt-4">Shared spaces</h3>
+        <v-card>
+          <v-card-actions>
+            <p class="ms-2 mb-0">Item name</p>
+
+            <v-spacer></v-spacer>
+
+            <v-btn class="teal darken-2 white--text">Open</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
