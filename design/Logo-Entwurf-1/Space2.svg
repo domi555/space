@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 500 500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:10;">
-    <path d="M20,40L480,40L480,140L20,140L20,40ZM40,140L40,470L460,470L460,140L40,140ZM325.02,250L174.98,250C161.17,250 149.98,238.81 149.98,225C149.98,211.19 161.17,200 174.98,200L325.02,200C338.83,200 350.02,211.19 350.02,225C350.02,238.81 338.83,250 325.02,250Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:20px;"/>
-    <g transform="matrix(1,0,0,1,-14.1992,39.7284)">
-        <text x="92.968px" y="375.802px" style="font-family:'AquireRegular', 'Aquire';font-size:110.204px;">SP<tspan x="210.886px 290.674px 375.641px " y="375.802px 375.802px 375.802px ">ACE</tspan></text>
-    </g>
-</svg>
