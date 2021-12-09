@@ -2,7 +2,7 @@
   <div id="app">
     <div>
       <p>Code: {{ code }}</p>
-      <v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_8_reader']"></v-quagga>
+      <v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga>
     </div>
   </div>
 </template>
@@ -19,6 +19,7 @@ export default {
       },
       detecteds: [],
       code: '',
+      readerTypes: ['code_128_reader', 'ean_reader', 'ean_8_reader', 'code_39_reader'],
     };
   },
   methods: {
