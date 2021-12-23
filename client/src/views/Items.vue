@@ -2,6 +2,9 @@
   <v-container fluid style="margin-top: 60px;">
     <v-row dense>
       <v-col>
+        <v-btn color="teal darken-2" outlined small dark class="mb-2" to="/spaces">
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
         <v-card>
           <v-card-actions>
             <p class="ms-2 mb-0">Item name</p>
@@ -19,14 +22,7 @@
 
     <div style="position: fixed; bottom: 12px; right: 12px;">
       <div class="d-flex flex-column">
-        <v-btn
-          color="teal darken-2"
-          small
-          fab
-          dark
-          class="mb-2"
-          to="/add-product"
-        >
+        <v-btn color="teal darken-2" small fab dark class="mb-2" to="/add-product">
           <v-icon>mdi-plus</v-icon>
         </v-btn>
         <v-btn color="teal darken-2" small fab dark>

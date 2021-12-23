@@ -22,7 +22,7 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn class="teal darken-2 white--text">Open</v-btn>
+            <v-btn class="teal darken-2 white--text" to="/items">Open</v-btn>
           </v-card-actions>
         </v-card>
 
@@ -33,7 +33,7 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn class="teal darken-2 white--text">Open</v-btn>
+            <v-btn class="teal darken-2 white--text" to="/items">Open</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
