@@ -1,3 +1,7 @@
+/* eslint-disable operator-linebreak */
+// eslint-disable-next-line spaced-comment
+/*eslint max-len: ["error", { "code": 250 }] */
+
 const asyncHandler = require('express-async-handler');
 const model = require('../model/users.js');
 
@@ -9,6 +13,21 @@ const getUsers = asyncHandler(async (req, res) => {
   } else res.status(200).json(rows);
 });
 
+const addUser = asyncHandler(async (req, res) => {
+  const { email, first, last, password } = req.body;
+  if (email == null || first == null || last == null || password == null) {
+    res.status(404).send('One or more properties missing: email, first, last, password');
+  } else {
+    try {
+      await model.addUser(req.body);
+      res.status(200).send('Erfolgreich');
+    } catch (error) {
+      res.status(404).send('Fehlgeschlagen');
+    }
+  }
+});
+
 module.exports = {
   getUsers,
+  addUser,
 };
