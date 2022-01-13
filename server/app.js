@@ -4,7 +4,7 @@ const helmet = require('helmet');
 const path = require('path');
 const spacesRoutes = require('./routes/spaces');
 const usersRoutes = require('./routes/users');
-// const productsRoutes = require('./routes/products');
+const productsRoutes = require('./routes/products');
 
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
@@ -22,7 +22,7 @@ app.use(express.json());
 
 app.use('/spaces', spacesRoutes);
 app.use('/users', usersRoutes);
-// app.use('/products', productsRoutes);
+app.use('/products', productsRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

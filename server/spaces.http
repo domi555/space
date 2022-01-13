@@ -1,1 +1,3 @@
-GET http://localhost:3000/spaces?id=1
+GET http://localhost:3000/spaces/1
+#################
+GET http://localhost:3000/spaces/10

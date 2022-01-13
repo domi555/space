@@ -3,6 +3,6 @@ const { getSpaces } = require('../controllers/spaces');
 
 const router = express.Router();
 
-router.get('/', getSpaces);
+router.get('/:id', getSpaces);
 
 module.exports = router;
