@@ -2,7 +2,9 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const path = require('path');
-const spaceRoutes = require('./routes/space');
+const spacesRoutes = require('./routes/spaces');
+const usersRoutes = require('./routes/users');
+// const productsRoutes = require('./routes/products');
 
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
@@ -18,7 +20,9 @@ app.use(helmet());
 
 app.use(express.json());
 
-app.use('/space', spaceRoutes);
+app.use('/spaces', spacesRoutes);
+app.use('/users', usersRoutes);
+// app.use('/products', productsRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

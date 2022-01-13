@@ -1,8 +1,8 @@
 const express = require('express');
-const { xyz } = require('../controllers/space');
+const { getSpaces } = require('../controllers/spaces');
 
 const router = express.Router();
 
-router.get('/', xyz);
+router.get('/', getSpaces);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 -- Abfragen inventar_manager_db
 
---  5 Files users.js spaces.js products.js
+--  3 Files users.js spaces.js products.js
 
 -- GET DATA
 -- Login: POST /users
@@ -8,16 +8,18 @@ SELECT id
 FROM users
 WHERE email = 'palatin.d02@htlwienwest.at'
   AND password = 'dp';
+
+
 -- Profile data: GET /users/:id
 SELECT email, first, last
 FROM users
-WHERE id = 1;
+WHERE id = 1; -- erledigt
 -- Spaces: GET /spaces/:id
 SELECT name, description, image
 FROM users
          JOIN users_spaces on users.id = users_spaces.user_id
          JOIN spaces on users.id = spaces.id
-WHERE users.id = 1;
+WHERE users.id = 1; -- erledigt
 -- Products: GET /products/:id
 SELECT products.name, products.description, products.image, count
 FROM users
