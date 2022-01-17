@@ -1,4 +1,10 @@
 <template>
+  <!--
+  POST /users
+  PATCH /users/:id/password
+  PATCH /users/:id
+  DELETE /user/:email
+  -->
   <v-container fluid style="margin-top: 70px;">
     <div class="px-2">
       <h3>Manage Account</h3>

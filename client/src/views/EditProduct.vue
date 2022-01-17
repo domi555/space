@@ -1,4 +1,7 @@
 <template>
+  <!--
+  PATCH /products/:id
+  -->
   <v-container fluid style="margin-top: 70px;">
     <div class="px-2">
       <h3>Edit Product</h3>

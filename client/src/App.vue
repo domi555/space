@@ -1,4 +1,8 @@
 <template>
+  <!--
+    POST /users
+    GET /users/:id
+   -->
   <v-app>
     <v-app-bar dark absolute class="teal darken-2">
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>

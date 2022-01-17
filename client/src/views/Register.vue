@@ -1,4 +1,7 @@
 <template>
+  <!--
+  POST /users/new
+  -->
   <div class="d-flex justify-center align-center" style="margin-top: 70px;">
     <v-container fluid fill-height>
       <v-layout align-center justify-center>

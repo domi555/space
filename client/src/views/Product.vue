@@ -1,4 +1,7 @@
 <template>
+  <!--
+  GET /products/:id
+  -->
   <v-container fluid style="margin-top: 60px;">
     <v-card>
       <v-img

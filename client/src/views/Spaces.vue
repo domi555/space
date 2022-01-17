@@ -1,4 +1,9 @@
 <template>
+  <!--
+  GET /spaces/:id
+  PATCH /spaces/:id/share
+  DELETE /spaces/:id
+  -->
   <v-container fluid style="margin-top: 60px;">
     <v-row dense>
       <v-col>
