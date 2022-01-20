@@ -1,4 +1,8 @@
 <template>
+  <!--
+    POST /users
+    GET /users/:id
+   -->
   <v-app>
     <v-app-bar dark absolute class="teal darken-2">
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
@@ -51,18 +55,45 @@
     </v-navigation-drawer>
 
     <v-main>
-      <router-view />
+      <router-view
+        :serverURL="serverURL"
+        :user="{ id: userId, data: userData }"
+        @loggedIn="loggedIn"
+      />
     </v-main>
   </v-app>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'App',
 
   data: () => ({
     drawer: false,
     group: null,
+
+    serverURL: process.env.VUE_APP_SERVER,
+    userId: null,
+    userData: null,
   }),
+
+  methods: {
+    async loggedIn(id) {
+      try {
+        this.userId = id;
+
+        const { data } = await axios({
+          url: this.serverURL + '/users/' + id,
+          method: 'GET',
+        });
+
+        this.userData = data;
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  },
 };
 </script>

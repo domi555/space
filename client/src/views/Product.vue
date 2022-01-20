@@ -1,4 +1,7 @@
 <template>
+  <!--
+  GET /products/:id
+  -->
   <v-container fluid style="margin-top: 60px;">
     <v-card>
       <v-img
@@ -46,7 +49,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    user: {
+      type: Object,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>
