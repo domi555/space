@@ -1,3 +1,5 @@
+/* eslint-disable prefer-template */
+/* eslint-disable guard-for-in */
 const db = require('../db');
 
 async function getSpaceByID(id) {
@@ -8,6 +10,48 @@ async function getSpaceByID(id) {
   return rows;
 }
 
+const addSpace = async (body) => {
+  const { rows } = await db.query('INSERT INTO spaces(name, description, image) VALUES ($1,$2,$3);', [
+    body.name,
+    body.description,
+    body.image,
+  ]);
+  return rows;
+};
+
+const addUserToSpace = async (body) => {
+  const { rows } = await db.query('INSERT INTO users_spaces(user_id, space_id, admin) VALUES ($1,$2,$3);', [
+    body.userid,
+    body.spaceid,
+    body.admin,
+  ]);
+  return rows;
+};
+
+const changeSpace = async (id, object) => {
+  const upd = [];
+  for (const key in object) {
+    upd.push(`${key} = '${object[key]}'`);
+  }
+  const cmd = 'UPDATE spaces SET ' + upd.join(', ') + ' WHERE id = $1';
+  await db.query(cmd, [id]);
+};
+
+const getSpace = async (param) => {
+  let result = null;
+  if (param.id) {
+    result = await db.query('SELECT * FROM spaces WHERE id = $1', [param.id]);
+  }
+  return result.rows;
+};
+
+const deleteSpace = (id) => db.query('DELETE FROM spaces WHERE id = $1', [id]);
+
 module.exports = {
   getSpaceByID,
+  addSpace,
+  addUserToSpace,
+  changeSpace,
+  getSpace,
+  deleteSpace,
 };

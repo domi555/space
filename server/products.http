@@ -1,1 +1,24 @@
 GET http://localhost:3000/products/1
+################################
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "TestProduct", 
+    "description": "Test Description", 
+    "image": "testimage.jpg", 
+    "count": 1, 
+    "spaceid": 2
+}
+################################
+PATCH http://localhost:3000/products/8
+Content-Type: application/json
+
+{
+    "name": "Patch hat funktioniert", 
+    "description": "Test Patch", 
+    "image": "patch.jpg", 
+    "count": 100
+}
+################################
+DELETE http://localhost:3000/products/8

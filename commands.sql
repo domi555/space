@@ -2,14 +2,6 @@
 
 --  3 Files users.js spaces.js products.js
 
--- GET DATA
--- Login: POST /users
-SELECT id
-FROM users
-WHERE email = 'palatin.d02@htlwienwest.at'
-  AND password = 'dp';
-
-
 -- Profile data: GET /users/:id
 SELECT email, first, last
 FROM users
@@ -31,7 +23,7 @@ WHERE users.id = 1;
 -- POST DATA
 -- Register: POST /users/new
 INSERT INTO users(email, first, last, password)
-VALUES ('email', 'first_name', 'last_name', 'password');
+VALUES ('email', 'first_name', 'last_name', 'password'); -- erledigt
 -- Add space: POST /spaces
 INSERT INTO spaces(name, description, image)
 VALUES ('name', 'description', 'image');
@@ -45,7 +37,7 @@ VALUES ('name', 'description', 'image', 1, 1);
 -- Update password: PATCH /users/:id/password
 UPDATE users
 SET password = 'password'
-WHERE id = 1;
+WHERE id = 1;  -- erledigt
 -- Update user: PATCH /users/:id
 UPDATE users
 SET email = 'email',

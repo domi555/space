@@ -1,3 +1,26 @@
 GET http://localhost:3000/spaces/1
 #################
 GET http://localhost:3000/spaces/10
+#################
+POST http://localhost:3000/spaces
+Content-Type: application/json
+
+{
+    "name": "Test", 
+    "description": "this is a test", 
+    "image": "test.jpg", 
+    "userid": 8, 
+    "spaceid": 2, 
+    "admin": "true"
+}
+################################
+PATCH http://localhost:3000/spaces/1
+Content-Type: application/json
+
+{
+    "name": "SPACE",
+    "description": "Patch geschafft",
+    "image": "test.jpg"
+}
+################################
+DELETE http://localhost:3000/spaces/1

@@ -1,4 +1,4 @@
-GET http://localhost:3000/users/1
+GET http://localhost:3000/users/8
 ################################
 GET http://localhost:3000/users/10
 ################################
@@ -6,9 +6,37 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "email": "example@example.com",
+    "email": "younas.h03@htlwienwest.at",
     "first": "Haroon",
     "last": "Younas",
     "password": "hy"
 }
 ################################
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email": "younas.h03@htlwienwest.at",
+    "first": "Haroon",
+    "password": "hy"
+}
+################################
+PATCH http://localhost:3000/users/7/password
+Content-Type: application/json
+
+{
+    "password": "geschafft"
+}
+################################
+PATCH http://localhost:3000/users/8
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "first": "T",
+    "last": "Est"
+}
+################################
+DELETE http://localhost:3000/users/younas.h03@htlwienwest.at
+################################
+DELETE http://localhost:3000/users/test.h03@htlwienwest.at

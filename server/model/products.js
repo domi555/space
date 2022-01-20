@@ -1,3 +1,5 @@
+/* eslint-disable prefer-template */
+/* eslint-disable guard-for-in */
 const db = require('../db');
 
 async function getProductByUserID(id) {
@@ -8,6 +10,37 @@ async function getProductByUserID(id) {
   return rows;
 }
 
+const addProduct = async (body) => {
+  const { rows } = await db.query(
+    'INSERT INTO products(name, description, image, count, space_id) VALUES ($1,$2,$3,$4,$5)  returning *;',
+    [body.name, body.description, body.image, body.count, body.spaceid],
+  );
+  return rows;
+};
+
+const changeProduct = async (id, object) => {
+  const upd = [];
+  for (const key in object) {
+    upd.push(`${key} = '${object[key]}'`);
+  }
+  const cmd = 'UPDATE products SET ' + upd.join(', ') + ' WHERE id = $1';
+  await db.query(cmd, [id]);
+};
+
+const getProduct = async (param) => {
+  let result = null;
+  if (param.id) {
+    result = await db.query('SELECT * FROM products WHERE id = $1', [param.id]);
+  }
+  return result.rows;
+};
+
+const deleteProduct = (id) => db.query('DELETE FROM products WHERE id = $1', [id]);
+
 module.exports = {
   getProductByUserID,
+  addProduct,
+  changeProduct,
+  getProduct,
+  deleteProduct,
 };
