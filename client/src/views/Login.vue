@@ -66,8 +66,10 @@ export default {
         });
 
         const userId = data.id;
+        console.log(userId);
         if (userId) {
           // TODO session setup
+          localStorage.setItem('id', userId)
 
           this.$emit('loggedIn', userId);
           this.$router.push('/');
