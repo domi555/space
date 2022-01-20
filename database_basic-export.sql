@@ -17,13 +17,13 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: inventar_manager; Type: DATABASE; Schema: -; Owner: dominikpalatin
+-- Name: inventar_manager; Type: DATABASE; Schema: -; Owner: postgres
 --
 
 CREATE DATABASE inventar_manager WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'C';
 
 
-ALTER DATABASE inventar_manager OWNER TO dominikpalatin;
+ALTER DATABASE inventar_manager OWNER TO postgres;
 
 \connect inventar_manager
 
@@ -43,7 +43,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: products; Type: TABLE; Schema: public; Owner: dominikpalatin
+-- Name: products; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.products (
@@ -57,10 +57,10 @@ CREATE TABLE public.products (
 );
 
 
-ALTER TABLE public.products OWNER TO dominikpalatin;
+ALTER TABLE public.products OWNER TO postgres;
 
 --
--- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: dominikpalatin
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.products_id_seq
@@ -72,17 +72,17 @@ CREATE SEQUENCE public.products_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.products_id_seq OWNER TO dominikpalatin;
+ALTER TABLE public.products_id_seq OWNER TO postgres;
 
 --
--- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dominikpalatin
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.products_id_seq OWNED BY public.products.id;
 
 
 --
--- Name: spaces; Type: TABLE; Schema: public; Owner: dominikpalatin
+-- Name: spaces; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.spaces (
@@ -93,10 +93,10 @@ CREATE TABLE public.spaces (
 );
 
 
-ALTER TABLE public.spaces OWNER TO dominikpalatin;
+ALTER TABLE public.spaces OWNER TO postgres;
 
 --
--- Name: spaces_id_seq; Type: SEQUENCE; Schema: public; Owner: dominikpalatin
+-- Name: spaces_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.spaces_id_seq
@@ -108,17 +108,17 @@ CREATE SEQUENCE public.spaces_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.spaces_id_seq OWNER TO dominikpalatin;
+ALTER TABLE public.spaces_id_seq OWNER TO postgres;
 
 --
--- Name: spaces_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dominikpalatin
+-- Name: spaces_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.spaces_id_seq OWNED BY public.spaces.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: dominikpalatin
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.users (
@@ -130,10 +130,10 @@ CREATE TABLE public.users (
 );
 
 
-ALTER TABLE public.users OWNER TO dominikpalatin;
+ALTER TABLE public.users OWNER TO postgres;
 
 --
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: dominikpalatin
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.users_id_seq
@@ -145,17 +145,17 @@ CREATE SEQUENCE public.users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.users_id_seq OWNER TO dominikpalatin;
+ALTER TABLE public.users_id_seq OWNER TO postgres;
 
 --
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dominikpalatin
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- Name: users_spaces; Type: TABLE; Schema: public; Owner: dominikpalatin
+-- Name: users_spaces; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.users_spaces (
@@ -165,31 +165,31 @@ CREATE TABLE public.users_spaces (
 );
 
 
-ALTER TABLE public.users_spaces OWNER TO dominikpalatin;
+ALTER TABLE public.users_spaces OWNER TO postgres;
 
 --
--- Name: products id; Type: DEFAULT; Schema: public; Owner: dominikpalatin
+-- Name: products id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.products ALTER COLUMN id SET DEFAULT nextval('public.products_id_seq'::regclass);
 
 
 --
--- Name: spaces id; Type: DEFAULT; Schema: public; Owner: dominikpalatin
+-- Name: spaces id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.spaces ALTER COLUMN id SET DEFAULT nextval('public.spaces_id_seq'::regclass);
 
 
 --
--- Name: users id; Type: DEFAULT; Schema: public; Owner: dominikpalatin
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 
 --
--- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: dominikpalatin
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO public.products VALUES (1, 'Panasonic GH4', 'Video-Kamera', 'gh4.jpg', 1, 2, 'a');
@@ -199,7 +199,7 @@ INSERT INTO public.products VALUES (2, 'Panasonic GH5', 'Video-Kamera', 'gh5.jpg
 
 
 --
--- Data for Name: spaces; Type: TABLE DATA; Schema: public; Owner: dominikpalatin
+-- Data for Name: spaces; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO public.spaces VALUES (1, 'Video-Labor', 'Das Video-Labor der HTL WW.', 'videolabor.jpg');
@@ -207,7 +207,7 @@ INSERT INTO public.spaces VALUES (2, 'Warenkorb', 'Der Warenkorb von Dominik Pal
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: dominikpalatin
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO public.users VALUES (1, 'palatin.d02@htlwienwest.at', 'Dominik', 'Palatin', 'dp');
@@ -216,7 +216,7 @@ INSERT INTO public.users VALUES (3, 'richard.wurzer@htlwienwest.at', 'Richard', 
 
 
 --
--- Data for Name: users_spaces; Type: TABLE DATA; Schema: public; Owner: dominikpalatin
+-- Data for Name: users_spaces; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO public.users_spaces VALUES (1, 2, true);
@@ -225,28 +225,28 @@ INSERT INTO public.users_spaces VALUES (3, 1, true);
 
 
 --
--- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dominikpalatin
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.products_id_seq', 4, true);
 
 
 --
--- Name: spaces_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dominikpalatin
+-- Name: spaces_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.spaces_id_seq', 2, true);
 
 
 --
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dominikpalatin
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.users_id_seq', 3, true);
 
 
 --
--- Name: products products_pk; Type: CONSTRAINT; Schema: public; Owner: dominikpalatin
+-- Name: products products_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.products
@@ -254,7 +254,7 @@ ALTER TABLE ONLY public.products
 
 
 --
--- Name: spaces spaces_pk; Type: CONSTRAINT; Schema: public; Owner: dominikpalatin
+-- Name: spaces spaces_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.spaces
@@ -262,7 +262,7 @@ ALTER TABLE ONLY public.spaces
 
 
 --
--- Name: users users_pk; Type: CONSTRAINT; Schema: public; Owner: dominikpalatin
+-- Name: users users_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -270,21 +270,21 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: products_barcode_uindex; Type: INDEX; Schema: public; Owner: dominikpalatin
+-- Name: products_barcode_uindex; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE UNIQUE INDEX products_barcode_uindex ON public.products USING btree (barcode);
 
 
 --
--- Name: users_email_uindex; Type: INDEX; Schema: public; Owner: dominikpalatin
+-- Name: users_email_uindex; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE UNIQUE INDEX users_email_uindex ON public.users USING btree (email);
 
 
 --
--- Name: products products_spaces_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: dominikpalatin
+-- Name: products products_spaces_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.products
@@ -292,7 +292,7 @@ ALTER TABLE ONLY public.products
 
 
 --
--- Name: spaces spaces_users_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: dominikpalatin
+-- Name: spaces spaces_users_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.spaces
@@ -300,7 +300,7 @@ ALTER TABLE ONLY public.spaces
 
 
 --
--- Name: users_spaces users_spaces_spaces_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: dominikpalatin
+-- Name: users_spaces users_spaces_spaces_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users_spaces
@@ -308,7 +308,7 @@ ALTER TABLE ONLY public.users_spaces
 
 
 --
--- Name: users_spaces users_spaces_users_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: dominikpalatin
+-- Name: users_spaces users_spaces_users_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users_spaces
