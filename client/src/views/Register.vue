@@ -45,7 +45,9 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn plain to="/login">Already have an account?</v-btn>
-              <v-btn class="teal darken-2" dark>Register</v-btn>
+              <v-btn class="teal darken-2" dark @click="register"
+                >Register</v-btn
+              >
             </v-card-actions>
           </v-card>
         </div>
@@ -55,6 +57,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -63,6 +67,36 @@ export default {
       last: '',
       password: '',
     };
+  },
+  props: {
+    serverURL: {
+      type: String,
+    },
+  },
+
+  methods: {
+    async register() {
+      try {
+        const { data } = await axios({
+          url: this.serverURL + '/register',
+          method: 'POST',
+          data: {
+            email: this.email,
+            password: this.password,
+            first: this.first,
+            last: this.last,
+          },
+        });
+
+        if (data.status) {
+          this.$router.push('/login');
+        } else {
+          alert('Registration failed.');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    },
   },
 };
 </script>

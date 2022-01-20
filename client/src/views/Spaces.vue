@@ -39,7 +39,10 @@
 <script>
 export default {
   name: 'Spaces',
-
-  data: () => ({}),
+  props: {
+    user: {
+      type: Object,
+    },
+  },
 };
 </script>

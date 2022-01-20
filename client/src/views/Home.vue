@@ -42,7 +42,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    user: {
+      type: Object,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>

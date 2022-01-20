@@ -54,7 +54,10 @@
 <script>
 export default {
   name: 'Products',
-
-  data: () => ({}),
+  props: {
+    user: {
+      type: Object,
+    },
+  },
 };
 </script>

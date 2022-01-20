@@ -28,7 +28,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn plain to="/register">No account?</v-btn>
-              <v-btn class="teal darken-2" dark to="/">Login</v-btn>
+              <v-btn class="teal darken-2" dark @click="login">Login</v-btn>
             </v-card-actions>
           </v-card>
         </div>
@@ -38,12 +38,46 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       email: '',
       password: '',
     };
+  },
+  props: {
+    serverURL: {
+      type: String,
+    },
+  },
+
+  methods: {
+    async login() {
+      try {
+        const { data } = await axios({
+          url: this.serverURL + '/login',
+          method: 'POST',
+          data: {
+            email: this.email,
+            password: this.password,
+          },
+        });
+
+        const userId = data.id;
+        if (userId) {
+          // TODO session setup
+
+          this.$emit('loggedIn', userId);
+          this.$router.push('/');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+
+      this.$emit('login', { email: this.email, password: this.password });
+    },
   },
 };
 </script>
