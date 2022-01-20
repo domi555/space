@@ -48,7 +48,7 @@
 <style lang="scss" scoped></style>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 
 export default {
   name: 'About',
@@ -69,23 +69,23 @@ export default {
   },
 
   created() {
-    this.first = this.user.userData.first;
-    this.last = this.user.userData.last;
-    this.password = this.user.userData.password;
+    // this.first = this.user.userData.first;
+    // this.last = this.user.userData.last;
+    // this.password = this.user.userData.password;
   },
 
   methods: {
-    async updateUser() {
-      try {
-        await axios({
-          url: this.serverURL + '/users/' + user.userId,
-          method: 'PATCH',
-        });
-        // TODO
-      } catch (e) {
-        console.error(e);
-      }
-    },
+    // async updateUser() {
+    //   try {
+    //     await axios({
+    //       url: this.serverURL + '/users/' + user.userId,
+    //       method: 'PATCH',
+    //     });
+    //     // TODO
+    //   } catch (e) {
+    //     console.error(e);
+    //   }
+    // },
   },
 };
 </script>
