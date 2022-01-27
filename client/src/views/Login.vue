@@ -9,20 +9,8 @@
             </v-toolbar>
             <v-card-text>
               <v-form>
-                <v-text-field
-                  v-model="email"
-                  prepend-icon="mdi-account"
-                  name="email"
-                  label="Email"
-                  type="text"
-                ></v-text-field>
-                <v-text-field
-                  v-model="password"
-                  prepend-icon="mdi-lock"
-                  name="password"
-                  label="Password"
-                  type="password"
-                ></v-text-field>
+                <v-text-field v-model="email" prepend-icon="mdi-account" name="email" label="Email" type="text"></v-text-field>
+                <v-text-field v-model="password" prepend-icon="mdi-lock" name="password" label="Password" type="password"></v-text-field>
               </v-form>
             </v-card-text>
             <v-card-actions>
@@ -69,7 +57,9 @@ export default {
         console.log(userId);
         if (userId) {
           // TODO session setup
-          localStorage.setItem('id', userId)
+          console.log(userId);
+          localStorage.setItem('id', userId);
+          this.$cookies.set('sid', { userId: userId });
 
           this.$emit('loggedIn', userId);
           this.$router.push('/');

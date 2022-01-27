@@ -8,7 +8,8 @@ const loginUser = asyncHandler(async (req, res) => {
     const rows = await model.getUserId(email, password);
     const uid = rows[0].id;
     if (uid) {
-      req.session.userId = uid;
+      // console.log('Cookies: ', req.cookies);
+      // req.session.userId = uid;
       res.status(200).json({ id: uid });
     } else res.status(401).send('Wrong email or password');
   } else res.status(400).send('Login failed');

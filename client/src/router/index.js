@@ -28,6 +28,10 @@ const routes = [
     path: '/spaces',
     name: 'Spaces',
     component: Spaces,
+    beforeEnter: (to, from, next) => {
+      if (!isAuthenticated()) next({ name: 'Login' });
+      next();
+    },
   },
   {
     path: '/add-space',
@@ -82,6 +86,12 @@ const routes = [
     component: Loading,
   },
 ];
+
+function isAuthenticated() {
+  console.log(Vue.$cookies.get('sid'));
+  if (Vue.$cookies.get('sid')) return true;
+  else return false;
+}
 
 const router = new VueRouter({
   mode: 'history',
