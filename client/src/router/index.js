@@ -13,8 +13,8 @@ import EditProduct from '../views/EditProduct.vue';
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 
-import Camera from '../views/Camera.vue';
-import Loading from '../views/Loading.vue';
+import Camera from '../components/Camera.vue';
+import Loading from '../components/Loading.vue';
 
 Vue.use(VueRouter);
 
@@ -42,6 +42,7 @@ const routes = [
     path: '/items',
     name: 'Items',
     component: Items,
+    props: true,
   },
   {
     path: '/account',

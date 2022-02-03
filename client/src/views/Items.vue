@@ -1,12 +1,12 @@
 <template>
   <!--
-  GET /spaces/:id
-  DELETE /products/:id
+    TODO
+    GET /products/:id
   -->
   <v-container fluid style="margin-top: 60px;">
     <v-row dense>
       <v-col>
-        <v-btn
+        <!-- <v-btn
           color="teal darken-2"
           outlined
           small
@@ -15,10 +15,10 @@
           to="/spaces"
         >
           <v-icon>mdi-chevron-left</v-icon>
-        </v-btn>
-        <v-card>
+        </v-btn> -->
+        <v-card v-for="(item, i) of items" :key="i" class="mb-3">
           <v-card-actions>
-            <p class="ms-2 mb-0">Item name</p>
+            <p class="ms-2 mb-0">{{ item.name }}</p>
 
             <v-spacer></v-spacer>
 
@@ -52,11 +52,36 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Products',
+  data() {
+    return {
+      items: [],
+    };
+  },
   props: {
+    serverURL: { type: String },
     user: {
       type: Object,
+    },
+    spaceId: { type: Number },
+  },
+  created() {
+    this.getItems();
+  },
+  methods: {
+    async getItems() {
+      try {
+        const result = await axios({
+          url: `http://localhost:3000/products/1`,
+          method: 'GET',
+        });
+        this.items = result.data;
+      } catch (e) {
+        console.error(e);
+      }
     },
   },
 };

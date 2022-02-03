@@ -55,11 +55,7 @@
     </v-navigation-drawer>
 
     <v-main>
-      <router-view
-        :serverURL="serverURL"
-        :user="{ id: userId, data: userData }"
-        @loggedIn="loggedIn"
-      />
+      <router-view :serverURL="serverURL" @loggedIn="loggedIn" />
     </v-main>
   </v-app>
 </template>
@@ -75,21 +71,17 @@ export default {
     group: null,
 
     serverURL: process.env.VUE_APP_SERVER,
-    userId: null,
-    userData: null,
   }),
 
   methods: {
     async loggedIn(id) {
       try {
-        this.userId = id;
-
         const { data } = await axios({
           url: this.serverURL + '/users/' + id,
           method: 'GET',
         });
 
-        this.userData = data;
+        localStorage.setItem('user', JSON.stringify({ id, data }));
       } catch (e) {
         console.error(e);
       }

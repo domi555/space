@@ -37,11 +37,31 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Spaces',
-  props: {
-    user: {
-      type: Object,
+  data() {
+    return {
+      user: JSON.parse(localStorage.getItem('user')),
+      spaces: [],
+    };
+  },
+
+  methods: {
+    async getSpaces() {
+      // TODO: Space id nicht USER id
+
+      console.log(this.user.id);
+      try {
+        const result = await axios({
+          url: `http://localhost:3000/spaces/${this.user.id}`,
+          method: 'GET',
+        });
+        this.spaces = result.data;
+      } catch (e) {
+        console.error(e);
+      }
     },
   },
 };

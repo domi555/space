@@ -1,6 +1,6 @@
 <template>
   <!--
-  GET /products/:id
+    GET /products/:id
   -->
   <v-container fluid style="margin-top: 60px;">
     <v-card>
@@ -50,6 +50,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      productId: null
+    }
+  },
   props: {
     user: {
       type: Object,
