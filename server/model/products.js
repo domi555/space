@@ -4,17 +4,20 @@ const db = require('../db');
 
 async function getProductByUserID(id) {
   const { rows } = await db.query(
-    'SELECT products.name, products.description, products.image, count FROM users JOIN users_spaces on users.id = users_spaces.user_id JOIN spaces on users.id = spaces.id JOIN products on spaces.id = products.space_id WHERE users.id = $1;',
+    'SELECT products.id, products.name, products.description, products.image, count FROM users JOIN users_spaces on users.id = users_spaces.user_id JOIN spaces on users.id = spaces.id JOIN products on spaces.id = products.space_id WHERE users.id = $1;',
     [id],
   );
   return rows;
 }
 
 const addProduct = async (body) => {
-  const { rows } = await db.query(
-    'INSERT INTO products(name, description, image, count, space_id) VALUES ($1,$2,$3,$4,$5)  returning *;',
-    [body.name, body.description, body.image, body.count, body.spaceid],
-  );
+  const { rows } = await db.query('INSERT INTO products(name, description, image, count, space_id) VALUES ($1,$2,$3,$4,$5)  returning *;', [
+    body.name,
+    body.description,
+    body.image,
+    body.count,
+    body.spaceid,
+  ]);
   return rows;
 };
 
@@ -27,12 +30,9 @@ const changeProduct = async (id, object) => {
   await db.query(cmd, [id]);
 };
 
-const getProduct = async (param) => {
-  let result = null;
-  if (param.id) {
-    result = await db.query('SELECT * FROM products WHERE id = $1', [param.id]);
-  }
-  return result.rows;
+const getProduct = async (id) => {
+  const { rows } = await db.query('SELECT * FROM products WHERE id = $1', [id]);
+  return rows;
 };
 
 const deleteProduct = (id) => db.query('DELETE FROM products WHERE id = $1', [id]);

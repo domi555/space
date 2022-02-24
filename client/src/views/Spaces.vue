@@ -7,22 +7,17 @@
   <v-container fluid style="margin-top: 60px;">
     <v-row dense>
       <v-col>
-        <v-card>
-          <v-img
-            class="white--text align-end"
-            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            height="200px"
-            src=""
-          >
-            <v-card-title>Space name</v-card-title>
+        <v-card v-for="space of spaces" :key="space.id">
+          <v-img class="white--text align-end" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="200px" src="">
+            <v-card-title>{{ space.name }}</v-card-title>
           </v-img>
 
           <v-card-actions>
-            <p class="ms-2 mb-0">1 Item</p>
+            <p class="ms-2 mb-0">{{ space.count }} Item(s)</p>
 
             <v-spacer></v-spacer>
 
-            <v-btn class="teal darken-2 white--text" to="/items">Open</v-btn>
+            <v-btn class="teal darken-2 white--text" :to="`/items/${space.id}`">Open</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -48,17 +43,21 @@ export default {
     };
   },
 
+  async created() {
+    await this.getSpaces();
+  },
+
   methods: {
     async getSpaces() {
       // TODO: Space id nicht USER id
 
-      console.log(this.user.id);
+      // console.log(this.user.id);
       try {
-        const result = await axios({
+        const { data } = await axios({
           url: `http://localhost:3000/spaces/${this.user.id}`,
           method: 'GET',
         });
-        this.spaces = result.data;
+        this.spaces = data;
       } catch (e) {
         console.error(e);
       }

@@ -22,10 +22,10 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn plain small to="/edit-product">
+            <v-btn plain small :to="`/edit-product/${item.id}`">
               Edit
             </v-btn>
-            <v-btn class="teal darken-2 white--text" to="/product">Open</v-btn>
+            <v-btn class="teal darken-2 white--text" :to="`/product/${item.id}`">Open</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -33,14 +33,7 @@
 
     <div style="position: fixed; bottom: 12px; right: 12px;">
       <div class="d-flex flex-column">
-        <v-btn
-          color="teal darken-2"
-          small
-          fab
-          dark
-          class="mb-2"
-          to="/add-product"
-        >
+        <v-btn color="teal darken-2" small fab dark class="mb-2" to="/add-product">
           <v-icon>mdi-plus</v-icon>
         </v-btn>
         <v-btn color="teal darken-2" small fab dark>
@@ -67,15 +60,16 @@ export default {
       type: Object,
     },
     spaceId: { type: Number },
+    id: { type: String },
   },
-  created() {
-    this.getItems();
+  async created() {
+    await this.getItems();
   },
   methods: {
     async getItems() {
       try {
         const result = await axios({
-          url: `http://localhost:3000/products/1`,
+          url: `http://localhost:3000/products/${this.id}`,
           method: 'GET',
         });
         this.items = result.data;

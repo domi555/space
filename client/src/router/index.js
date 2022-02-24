@@ -39,7 +39,7 @@ const routes = [
     component: AddSpace,
   },
   {
-    path: '/items',
+    path: '/items/:id',
     name: 'Items',
     component: Items,
     props: true,
@@ -50,9 +50,10 @@ const routes = [
     component: Account,
   },
   {
-    path: '/product',
+    path: '/product/:id',
     name: 'Product',
     component: Product,
+    props: true,
   },
   {
     path: '/add-product',
@@ -60,9 +61,10 @@ const routes = [
     component: AddProduct,
   },
   {
-    path: '/edit-product',
+    path: '/edit-product/:id',
     name: 'EditProduct',
     component: EditProduct,
+    props: true,
   },
 
   {

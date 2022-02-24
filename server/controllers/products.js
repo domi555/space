@@ -12,6 +12,13 @@ const getProductByUserID = asyncHandler(async (req, res) => {
   } else res.status(200).json(rows);
 });
 
+const getProductByID = asyncHandler(async (req, res) => {
+  const rows = await model.getProduct(req.params.id);
+  if (rows.length === 0) {
+    res.status(404).send(`Product mit der ID ${req.params.id} nicht gefunden`);
+  } else res.status(200).json(rows[0]);
+});
+
 const addProduct = asyncHandler(async (req, res) => {
   const { name, description, image, count, spaceid } = req.body;
   if (name == null || description == null || image == null || count == null || spaceid == null) {
@@ -24,7 +31,7 @@ const addProduct = asyncHandler(async (req, res) => {
 
 const changeProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const rows = await model.getProduct({ id });
+  const rows = await model.getProduct(id);
   if (rows.length > 0) {
     try {
       await model.changeProduct(id, req.body);
@@ -39,7 +46,7 @@ const changeProduct = asyncHandler(async (req, res) => {
 
 const deleteProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const rows = await model.getProduct({ id });
+  const rows = await model.getProduct(id);
   if (rows.length > 0) {
     model.deleteProduct(id);
     res.status(200).send(`Das Product mit der ID ${id} wurde erfolgreich gelöscht`);
@@ -53,4 +60,5 @@ module.exports = {
   addProduct,
   changeProduct,
   deleteProduct,
+  getProductByID,
 };

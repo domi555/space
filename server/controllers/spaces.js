@@ -3,23 +3,13 @@ const asyncHandler = require('express-async-handler');
 const model = require('../model/spaces.js');
 
 const getSpaces = asyncHandler(async (req, res) => {
-  const { id } = req.params;
   const rows = await model.getSpaceByID(req.params.id);
-  if (rows.length === 0) {
-    res.status(404).send(`Space mit der ID ${id} nicht gefunden`);
-  } else res.status(200).json(rows);
+  res.status(200).json(rows);
 });
 
 const addSpace = asyncHandler(async (req, res) => {
   const { name, description, image, userid, spaceid, admin } = req.body;
-  if (
-    name == null ||
-    description == null ||
-    image == null ||
-    userid == null ||
-    spaceid == null ||
-    admin == null
-  ) {
+  if (name == null || description == null || image == null || userid == null || spaceid == null || admin == null) {
     res.status(404).send('Fehler bei den Properties: name, description, image, userid, spaceid, admin');
   } else {
     await model.addSpace(req.body);

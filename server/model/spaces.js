@@ -4,27 +4,19 @@ const db = require('../db');
 
 async function getSpaceByID(id) {
   const { rows } = await db.query(
-    'SELECT name, description, image FROM users JOIN users_spaces on users.id = users_spaces.user_id JOIN spaces on users.id = spaces.id WHERE users.id = $1;',
+    'SELECT spaces.name, spaces.id as id, spaces.description, spaces.image, count(p.id) FROM users JOIN users_spaces on users.id = users_spaces.user_id JOIN spaces on users.id = spaces.id join products p on spaces.id = p.space_id WHERE users.id = $1 group by spaces.name, spaces.id, spaces.description, spaces.image;',
     [id],
   );
   return rows;
 }
 
 const addSpace = async (body) => {
-  const { rows } = await db.query('INSERT INTO spaces(name, description, image) VALUES ($1,$2,$3);', [
-    body.name,
-    body.description,
-    body.image,
-  ]);
+  const { rows } = await db.query('INSERT INTO spaces(name, description, image) VALUES ($1,$2,$3);', [body.name, body.description, body.image]);
   return rows;
 };
 
 const addUserToSpace = async (body) => {
-  const { rows } = await db.query('INSERT INTO users_spaces(user_id, space_id, admin) VALUES ($1,$2,$3);', [
-    body.userid,
-    body.spaceid,
-    body.admin,
-  ]);
+  const { rows } = await db.query('INSERT INTO users_spaces(user_id, space_id, admin) VALUES ($1,$2,$3);', [body.userid, body.spaceid, body.admin]);
   return rows;
 };
 
