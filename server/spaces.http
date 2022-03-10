@@ -10,7 +10,6 @@ Content-Type: application/json
     "description": "this is a test", 
     "image": "test.jpg", 
     "userid": 8, 
-    "spaceid": 2, 
     "admin": "true"
 }
 ################################

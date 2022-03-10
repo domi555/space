@@ -21,8 +21,8 @@ const getProductByID = asyncHandler(async (req, res) => {
 
 const addProduct = asyncHandler(async (req, res) => {
   const { name, description, image, count, spaceid } = req.body;
-  if (name == null || description == null || image == null || count == null || spaceid == null) {
-    res.status(404).send('Fehler bei den Properties: name, description, image, count, space_id');
+  if (name === null || description === null || image === null || count === null || spaceid === null) {
+    res.status(404).send('Fehler bei den Properties: name, description, image, count, space_id, barcode');
   } else {
     const result = await model.addProduct(req.body);
     res.status(200).send(result);

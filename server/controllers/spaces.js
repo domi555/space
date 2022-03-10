@@ -8,12 +8,12 @@ const getSpaces = asyncHandler(async (req, res) => {
 });
 
 const addSpace = asyncHandler(async (req, res) => {
-  const { name, description, image, userid, spaceid, admin } = req.body;
-  if (name == null || description == null || image == null || userid == null || spaceid == null || admin == null) {
+  const { name, description, image, userid, admin } = req.body;
+  if (name == null || description == null || image == null || userid == null || admin == null) {
     res.status(404).send('Fehler bei den Properties: name, description, image, userid, spaceid, admin');
   } else {
-    await model.addSpace(req.body);
-    await model.addUserToSpace(req.body);
+    const result = await model.addSpace(req.body);
+    await model.addUserToSpace(req.body, result[0].id);
     res.status(200).send('Erfolgreich hinzugefügt');
   }
 });

@@ -11,12 +11,13 @@ async function getProductByUserID(id) {
 }
 
 const addProduct = async (body) => {
-  const { rows } = await db.query('INSERT INTO products(name, description, image, count, space_id) VALUES ($1,$2,$3,$4,$5)  returning *;', [
+  const { rows } = await db.query('INSERT INTO products(name, description, image, count, space_id, barcode) VALUES ($1,$2,$3,$4,$5,$6) returning *;', [
     body.name,
     body.description,
     body.image,
     body.count,
     body.spaceid,
+    body.barcode,
   ]);
   return rows;
 };

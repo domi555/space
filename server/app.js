@@ -17,6 +17,8 @@ require('colors');
 require('dotenv').config();
 
 const app = express();
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb' }));
 
 app.use(morgan('dev'));
 app.use(cors());
@@ -32,7 +34,7 @@ app.use(express.json());
 // Register middleware for express sessions here
 
 const { PORT, NODE_ENV, SESSION_LIFETIME, SESSION_NAME, SESSION_SECRET } = process.env;
-app.set('trust proxy', 1);
+// app.set('trust proxy', 1);
 
 // app.use(
 //   session({

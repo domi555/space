@@ -9,7 +9,7 @@
             </v-toolbar>
             <v-card-text>
               <v-form>
-                <v-text-field v-model="email" prepend-icon="mdi-account" name="email" label="Email" type="text"></v-text-field>
+                <v-text-field v-model="email" prepend-icon="mdi-account" name="email" label="Email" type="email"></v-text-field>
                 <v-text-field v-model="password" prepend-icon="mdi-lock" name="password" label="Password" type="password"></v-text-field>
               </v-form>
             </v-card-text>

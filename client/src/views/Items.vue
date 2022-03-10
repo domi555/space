@@ -33,7 +33,7 @@
 
     <div style="position: fixed; bottom: 12px; right: 12px;">
       <div class="d-flex flex-column">
-        <v-btn color="teal darken-2" small fab dark class="mb-2" to="/add-product">
+        <v-btn color="teal darken-2" small fab dark class="mb-2" :to="'/add-product/' + id">
           <v-icon>mdi-plus</v-icon>
         </v-btn>
         <v-btn color="teal darken-2" small fab dark>

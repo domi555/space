@@ -11,12 +11,12 @@ async function getSpaceByID(id) {
 }
 
 const addSpace = async (body) => {
-  const { rows } = await db.query('INSERT INTO spaces(name, description, image) VALUES ($1,$2,$3);', [body.name, body.description, body.image]);
+  const { rows } = await db.query('INSERT INTO spaces(name, description, image) VALUES ($1,$2,$3) RETURNING id;', [body.name, body.description, body.image]);
   return rows;
 };
 
-const addUserToSpace = async (body) => {
-  const { rows } = await db.query('INSERT INTO users_spaces(user_id, space_id, admin) VALUES ($1,$2,$3);', [body.userid, body.spaceid, body.admin]);
+const addUserToSpace = async (body, id) => {
+  const { rows } = await db.query('INSERT INTO users_spaces(user_id, space_id, admin) VALUES ($1,$2,$3);', [body.userid, id, body.admin]);
   return rows;
 };
 
