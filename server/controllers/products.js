@@ -19,17 +19,18 @@ const getProductByID = asyncHandler(async (req, res) => {
   } else res.status(200).json(rows[0]);
 });
 
+const getProductByBarcode = asyncHandler(async (req, res) => {
+  const rows = await model.getProductByBarcode(req.params.barcode);
+  res.status(200).json(rows[0]);
+});
+
 const addProduct = asyncHandler(async (req, res) => {
   const { name, description, image, count, spaceid } = req.body;
   if (name == null || description == null || image == null || count == null || spaceid == null) {
     res.status(404).send('Fehler bei den Properties: name, description, image, count, space_id, barcode');
   } else {
-    try {
-      const result = await model.addProduct(req.body);
-      res.status(200).json({ code: 200, data: result });
-    } catch (err) {
-      res.status(500).send({ code: 500, data: err });
-    }
+    const result = await model.addProduct(req.body);
+    res.status(200).send(result);
   }
 });
 
@@ -65,4 +66,5 @@ module.exports = {
   changeProduct,
   deleteProduct,
   getProductByID,
+  getProductByBarcode,
 };

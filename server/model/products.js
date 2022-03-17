@@ -10,15 +10,15 @@ async function getProductByUserID(id) {
   return rows;
 }
 
+async function getProductByBarcode(barcode) {
+  const { rows } = await db.query('select * from products where barcode = $1;', [barcode]);
+  return rows;
+}
 const addProduct = async (body) => {
-  const { rows } = await db.query('INSERT INTO products(name, description, image, count, space_id, barcode) VALUES ($1,$2,$3,$4,$5,$6) returning *;', [
-    body.name,
-    body.description,
-    body.image,
-    body.count,
-    body.spaceid,
-    body.barcode,
-  ]);
+  const { rows } = await db.query(
+    'INSERT INTO products(name, description, image, count, space_id, barcode) VALUES ($1,$2,$3,$4,$5,$6) returning *;',
+    [body.name, body.description, body.image, body.count, body.spaceid, body.barcode],
+  );
   return rows;
 };
 
@@ -44,4 +44,5 @@ module.exports = {
   changeProduct,
   getProduct,
   deleteProduct,
+  getProductByBarcode,
 };
