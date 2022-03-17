@@ -7,7 +7,7 @@
   <v-container fluid style="margin-top: 60px;">
     <v-row dense>
       <v-col>
-        <v-card v-for="space of spaces" :key="space.id">
+        <v-card v-for="space of spaces" :key="space.id" class="my-3">
           <v-img class="white--text align-end" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="200px" :src="`${space.image}`">
             <v-card-title>{{ space.name }}</v-card-title>
           </v-img>

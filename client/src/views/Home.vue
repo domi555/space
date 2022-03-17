@@ -16,7 +16,7 @@
 
       <v-col class="col-12">
         <h3 class="my-2">Smart overview</h3>
-        <v-card v-for="space of spaces" :key="space.id">
+        <v-card v-for="space of spaces" :key="space.id" class="my-3">
           <v-card-actions>
             <p class="ms-2 mb-0">{{ space.name }}</p>
 
