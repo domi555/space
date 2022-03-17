@@ -4,10 +4,10 @@
   -->
   <v-container fluid style="margin-top: 60px;">
     <v-card>
-      <v-img class="white--text align-end" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="180px">
+      <v-img class="white--text align-end" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="180px" :src="`${this.data.image}`">
         <v-card-title> {{ this.data.name }} </v-card-title>
-      </v-img></v-card
-    >
+      </v-img>
+    </v-card>
 
     <div class="mt-2 mx-1">
       <v-list-item class="ps-0">

@@ -75,7 +75,7 @@ export default {
           },
         });
 
-        this.$router.push('/spaces')
+        this.$router.push('/spaces');
       } catch (e) {
         console.error(e);
       }

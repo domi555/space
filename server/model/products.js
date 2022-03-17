@@ -4,7 +4,7 @@ const db = require('../db');
 
 async function getProductByUserID(id) {
   const { rows } = await db.query(
-    'SELECT products.id, products.name, products.description, products.image, count FROM users JOIN users_spaces on users.id = users_spaces.user_id JOIN spaces on users.id = spaces.id JOIN products on spaces.id = products.space_id WHERE users.id = $1;',
+    'select p.id, p.name, p.description, p.image, count from users join users_spaces us on users.id = us.user_id join spaces s on us.space_id = s.id join products p on s.id = p.space_id where s.id = $1 group by p.id, p.name, p.description, p.image, count;',
     [id],
   );
   return rows;

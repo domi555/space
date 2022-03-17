@@ -4,7 +4,8 @@ const db = require('../db');
 
 async function getSpaceByID(id) {
   const { rows } = await db.query(
-    'SELECT spaces.name, spaces.id as id, spaces.description, spaces.image, count(p.id) FROM users JOIN users_spaces on users.id = users_spaces.user_id JOIN spaces on users.id = spaces.id join products p on spaces.id = p.space_id WHERE users.id = $1 group by spaces.name, spaces.id, spaces.description, spaces.image;',
+    // 'SELECT spaces.name, spaces.id as id, spaces.description, spaces.image, count(p.id) FROM users JOIN users_spaces on users.id = users_spaces.user_id JOIN spaces on users.id = spaces.id join products p on spaces.id = p.space_id WHERE users.id = $1 group by spaces.name, spaces.id, spaces.description, spaces.image;',
+    'select s.name, s.id as id, s.description, s.image, (select count(products.id) from products where space_id = s.id) from users_spaces join spaces s on s.id = users_spaces.space_id join users u on u.id = users_spaces.user_id where user_id = $1;',
     [id],
   );
   return rows;

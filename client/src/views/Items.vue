@@ -64,6 +64,7 @@ export default {
   },
   async created() {
     await this.getItems();
+    console.log(this.spaceId);
   },
   methods: {
     async getItems() {
