@@ -36,9 +36,9 @@
         <v-btn color="teal darken-2" small fab dark class="mb-2" :to="'/add-product/' + id">
           <v-icon>mdi-plus</v-icon>
         </v-btn>
-        <v-btn color="teal darken-2" small fab dark>
+        <!-- <v-btn color="teal darken-2" small fab dark>
           <v-icon>mdi-minus</v-icon>
-        </v-btn>
+        </v-btn> -->
       </div>
     </div>
   </v-container>

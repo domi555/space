@@ -25,6 +25,17 @@
 
       <v-btn dark class="mt-5 teal darken-2" @click="addProduct">Create</v-btn>
     </div>
+    <div class="text-center">
+      <v-snackbar v-model="snackbar" :timeout="timeout">
+        {{ text }}
+
+        <template v-slot:action="{ attrs }">
+          <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+    </div>
   </v-container>
 </template>
 
@@ -45,6 +56,10 @@ export default {
       select: false,
       file: null,
       image: 'nuller',
+
+      snackbar: false,
+      text: '',
+      timeout: 5000,
     };
   },
   props: {
@@ -59,9 +74,10 @@ export default {
     scanBarcode() {
       // Scan overlay...
     },
+    // Info: Table products => image varchar(100) wurde geändert zu text
     async addProduct() {
       try {
-        await axios({
+        const { code, data } = await axios({
           url: `${this.serverURL}/products`,
           method: 'POST',
           data: {
@@ -70,9 +86,18 @@ export default {
             image: this.image,
             count: 1,
             barcode: this.productBarcode,
-            spaceid: this.id
+            spaceid: this.id,
           },
         });
+        console.log(data);
+        if (code == 200) {
+          this.text = 'Product has been added';
+          this.snackbar = true;
+        }
+        if (code == 500) {
+          this.text = `Error while adding product`;
+          this.snackbar = true;
+        }
       } catch (e) {
         console.error(e);
       }
