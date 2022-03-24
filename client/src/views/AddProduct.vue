@@ -6,7 +6,6 @@
   <v-container fluid style="margin-top: 70px;">
     <div class="px-2">
       <h3>Add Product</h3>
-
       <v-form ref="form" v-model="valid" @submit.prevent="submit">
         <v-text-field
           color="teal"
