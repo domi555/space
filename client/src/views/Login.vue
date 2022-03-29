@@ -62,13 +62,17 @@ export default {
           this.$cookies.set('sid', { userId: userId });
 
           this.$emit('loggedIn', userId);
-          this.$router.push('/');
+
+          setTimeout(this.push, 1000);
         }
       } catch (e) {
         console.error(e);
       }
 
       this.$emit('login', { email: this.email, password: this.password });
+    },
+    push() {
+      this.$router.push('/');
     },
   },
 };

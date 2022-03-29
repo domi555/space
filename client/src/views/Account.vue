@@ -92,7 +92,7 @@ export default {
     logout() {
       localStorage.clear();
       this.$cookies.remove('sid');
-      this.$router.push('/');
+      this.$router.push('/login');
     },
   },
 };

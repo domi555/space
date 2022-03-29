@@ -23,6 +23,10 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    beforeEnter: (to, from, next) => {
+      if (!isAuthenticated()) next({ name: 'Login' });
+      next();
+    },
   },
   {
     path: '/spaces',
@@ -37,35 +41,59 @@ const routes = [
     path: '/add-space',
     name: 'AddSpace',
     component: AddSpace,
+    beforeEnter: (to, from, next) => {
+      if (!isAuthenticated()) next({ name: 'Login' });
+      next();
+    },
   },
   {
     path: '/items/:id',
     name: 'Items',
     component: Items,
     props: true,
+    beforeEnter: (to, from, next) => {
+      if (!isAuthenticated()) next({ name: 'Login' });
+      next();
+    },
   },
   {
     path: '/account',
     name: 'Account',
     component: Account,
+    beforeEnter: (to, from, next) => {
+      if (!isAuthenticated()) next({ name: 'Login' });
+      next();
+    },
   },
   {
     path: '/product/:id',
     name: 'Product',
     component: Product,
     props: true,
+    beforeEnter: (to, from, next) => {
+      if (!isAuthenticated()) next({ name: 'Login' });
+      next();
+    },
   },
   {
     path: '/add-product/:id',
     name: 'AddProduct',
     component: AddProduct,
     props: true,
+    beforeEnter: (to, from, next) => {
+      if (!isAuthenticated()) next({ name: 'Login' });
+      next();
+    },
   },
   {
     path: '/edit-product/:id',
     name: 'EditProduct',
     component: EditProduct,
     props: true,
+    beforeEnter: (to, from, next) => {
+      if (!isAuthenticated()) next({ name: 'Login' });
+      next();
+    },
   },
 
   {

@@ -3,6 +3,12 @@
     TODO
     POST /products
   -->
+  <!-- <div>
+    <Camera v-if="camera" @skip="camera = false" @barcode="newBarcode"></Camera>
+    <v-container fluid style="margin-top: 70px;" v-else>
+      <div class="px-2">
+        <h3>Add Product</h3> -->
+
   <v-container fluid style="margin-top: 70px;">
     <div class="px-2">
       <h3>Add Product</h3>
@@ -45,39 +51,71 @@
             ></v-text-field>
           </v-col>
           <v-col cols="2">
-            <v-btn small class="mt-6 teal darken-2" dark @click="scanBarcode">Scan</v-btn>
+            <v-btn small class="mt-6 teal darken-2" dark @click="camera = true">Scan</v-btn>
           </v-col>
         </v-row>
 
-        <v-btn
-          dark
-          class="mt-5 teal darken-2"
-          type="submit"
-          @click="
-            addProduct();
-            submit;
-          "
-          >Create</v-btn
-        ></v-form
-      >
-    </div>
-    <div class="text-center">
-      <v-snackbar v-model="snackbar" :timeout="timeout">
-        {{ text }}
+        <h4 class="mt-6 mb-0">Product name</h4>
 
-        <template v-slot:action="{ attrs }">
-          <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
-            Close
-          </v-btn>
-        </template>
-      </v-snackbar>
-    </div>
-  </v-container>
+        <v-form ref="form" v-model="valid" @submit.prevent="submit">
+          <v-text-field
+            color="teal"
+            label="Name"
+            hide-details="auto"
+            v-model="productName"
+            :error-messages="nameRules"
+            @input="$v.productName.$touch()"
+            @blur="$v.productName.$touch()"
+          ></v-text-field>
+          <h4 class="mt-3 mb-0">Description</h4>
+          <v-text-field
+            color="teal"
+            label="Description"
+            hide-details="auto"
+            v-model="productDesc"
+            :error-messages="descRules"
+            @input="$v.productDesc.$touch()"
+            @blur="$v.productDesc.$touch()"
+          ></v-text-field>
+          <h4 class="mt-4 mb-2">Image</h4>
+          <span v-if="image.length <= 0" class="red--text mr-5"><b>Image not selected yet</b></span>
+          <v-btn small dark class="teal darken-2" type="file" @click="upload">Select</v-btn>
+          <input ref="upload" class="d-none" type="file" accept=".jpg,.png" @change="picked" />
+
+          <br />
+
+          <v-btn
+            dark
+            class="mt-5 teal darken-2"
+            type="submit"
+            @click="
+              addProduct();
+              submit;
+            "
+            >Create</v-btn
+          ></v-form
+        >
+      </div>
+      <div class="text-center">
+        <v-snackbar v-model="snackbar" :timeout="timeout">
+          {{ text }}
+
+          <template v-slot:action="{ attrs }">
+            <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+              Close
+            </v-btn>
+          </template>
+        </v-snackbar>
+      </div>
+    </v-container>
+  </div>
 </template>
 
 <script>
 import { validationMixin } from 'vuelidate';
 import { required } from 'vuelidate/lib/validators';
+import Camera from '@/components/Camera.vue';
+
 import axios from 'axios';
 
 export default {
@@ -92,10 +130,10 @@ export default {
       serverURL: process.env.VUE_APP_SERVER,
       userID: JSON.parse(localStorage.getItem('user')),
 
-      productName: 'Product',
-      productDesc: 'P',
+      productName: '',
+      productDesc: '',
 
-      productBarcode: '1234567890',
+      productBarcode: '',
 
       select: false,
       file: null,
@@ -108,11 +146,13 @@ export default {
       valid: false,
 
       items: [],
+
+      camera: false,
     };
   },
   props: {
     id: {
-      type: Number,
+      type: String,
     },
   },
   computed: {
@@ -136,14 +176,16 @@ export default {
     },
   },
   methods: {
-    uploadImage() {
-      // Upload image...
-    },
     scanBarcode() {
       // Scan overlay...
     },
     submit() {
       this.$v.$touch();
+    },
+    newBarcode(e) {
+      console.log(e);
+      this.camera = false;
+      this.productBarcode = e;
     },
     // Info: Table products => image varchar(100) wurde geändert zu text
     async addProduct() {
@@ -232,10 +274,12 @@ export default {
       console.log(this.image);
     },
   },
+  components: {
+    Camera,
+  },
 };
 </script>
 
 <style lang="scss" scoped></style>
 
-create user inv_manager login password '1234'; grant all on products,spaces,users,users_spaces to inv_manager;
-GRANT ALL ON products_id_seq to inv_manager;
+create user inv_manager login password '1234'; grant all on products,spaces,users,users_spaces to inv_manager; GRANT ALL ON products_id_seq to inv_manager;

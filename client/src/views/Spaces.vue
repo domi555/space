@@ -15,7 +15,7 @@
             <p class="ms-2 mb-0">{{ space.count }} Item(s)</p>
 
             <v-spacer></v-spacer>
-
+            <v-btn class="red darken-2 white--text" @click="deleteSpace(space.id, space.name)">Delete</v-btn>
             <v-btn class="teal darken-2 white--text" :to="`/items/${space.id}`">Open</v-btn>
           </v-card-actions>
         </v-card>
@@ -27,6 +27,15 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </div>
+    <v-snackbar v-model="snackbar" :timeout="timeout">
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -39,6 +48,10 @@ export default {
     return {
       user: JSON.parse(localStorage.getItem('user')),
       spaces: [],
+
+      snackbar: false,
+      text: '',
+      timeout: 4000,
     };
   },
 
@@ -54,6 +67,20 @@ export default {
           method: 'GET',
         });
         this.spaces = data;
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    async deleteSpace(id, name) {
+      this.snackbar = false;
+      this.text = `Space ${name} has been deleted`;
+      try {
+        await axios({
+          url: `http://localhost:3000/spaces/${id}`,
+          method: 'delete',
+        });
+        this.snackbar = true;
+        this.spaces = this.spaces.filter((el) => el.id != id);
       } catch (e) {
         console.error(e);
       }

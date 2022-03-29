@@ -4,6 +4,7 @@
     GET /products/:id
   -->
   <v-container fluid style="margin-top: 60px;">
+    <h2 v-if="items.length == 0" class="text-center">Your current space is empty</h2>
     <v-row dense>
       <v-col>
         <!-- <v-btn

@@ -1,14 +1,10 @@
 <template>
-  <v-container fluid class="pa-0" style="margin-top: 60px;">
+  <v-container ref="container" fluid class="pa-0" style="margin-top: 60px;">
     <div class="">
-      <div class="a">
-        <br />
-        <p>Code: {{ code }}</p>
-        <v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga>
-      </div>
+      <v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga>
     </div>
     <div class="d-flex justify-center align-center" style="position: fixed; bottom: 0; width: 100%;">
-      <v-btn class="teal darken-2 white--text mb-4">Skip</v-btn>
+      <v-btn class="teal darken-2 white--text mb-4" @click="$emit('skip')">Skip</v-btn>
     </div>
   </v-container>
 </template>
@@ -18,8 +14,8 @@ export default {
   data() {
     return {
       readerSize: {
-        width: 640,
-        height: 480,
+        width: 414,
+        height: 896,
       },
       detecteds: [],
       code: '',
@@ -29,14 +25,9 @@ export default {
   methods: {
     logIt(data) {
       this.code = data.codeResult.code;
+      this.$emit('barcode', this.code);
       console.log('detected', data);
     },
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.a {
-  padding-left: 620px;
-}
-</style>
