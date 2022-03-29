@@ -11,6 +11,8 @@
 
   <v-container fluid style="margin-top: 70px;">
     <div class="px-2">
+      <Camera v-if="camera" @skip="camera = false" @barcode="newBarcode"></Camera>
+
       <h3>Add Product</h3>
       <v-form ref="form" v-model="valid" @submit.prevent="submit">
         <v-text-field
@@ -95,20 +97,20 @@
             >Create</v-btn
           ></v-form
         >
-      </div>
-      <div class="text-center">
-        <v-snackbar v-model="snackbar" :timeout="timeout">
-          {{ text }}
+      </v-form>
+    </div>
+    <div class="text-center">
+      <v-snackbar v-model="snackbar" :timeout="timeout">
+        {{ text }}
 
-          <template v-slot:action="{ attrs }">
-            <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
-              Close
-            </v-btn>
-          </template>
-        </v-snackbar>
-      </div>
-    </v-container>
-  </div>
+        <template v-slot:action="{ attrs }">
+          <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+    </div>
+  </v-container>
 </template>
 
 <script>
