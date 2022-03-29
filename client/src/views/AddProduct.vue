@@ -13,8 +13,9 @@
     <div class="px-2">
       <Camera v-if="camera" @skip="camera = false" @barcode="newBarcode"></Camera>
 
-      <h3>Add Product</h3>
-      <v-form ref="form" v-model="valid" @submit.prevent="submit">
+      <v-form ref="form" v-model="valid" @submit.prevent="submit" v-if="!camera">
+        <h3>Add Product</h3>
+        <h4 class="mt-6 mb-0">Product name</h4>
         <v-text-field
           color="teal"
           label="Name"
@@ -57,9 +58,18 @@
           </v-col>
         </v-row>
 
-        <h4 class="mt-6 mb-0">Product name</h4>
+        <v-btn
+          dark
+          class="mt-5 teal darken-2"
+          type="submit"
+          @click="
+            addProduct();
+            submit;
+          "
+          >Create</v-btn
+        >
 
-        <v-form ref="form" v-model="valid" @submit.prevent="submit">
+        <!-- <v-form ref="form" v-model="valid" @submit.prevent="submit">
           <v-text-field
             color="teal"
             label="Name"
@@ -96,7 +106,7 @@
             "
             >Create</v-btn
           ></v-form
-        >
+        > -->
       </v-form>
     </div>
     <div class="text-center">
